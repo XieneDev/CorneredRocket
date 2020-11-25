@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Resources/Theme/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/options_menu.gd" type="Script" id=2]
+[ext_resource path="res://Audio/SFX/Select.wav" type="AudioStream" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
+
+[node name="OptionsMenu" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -37.0
+margin_right = 48.0
+margin_bottom = 37.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screenshake" type="Button" parent="OptionsMenu/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 22.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Screenshake: On"
+
+[node name="Fullscreen" type="Button" parent="OptionsMenu/VBoxContainer"]
+margin_top = 26.0
+margin_right = 96.0
+margin_bottom = 48.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Fullscreen: Off"
+
+[node name="Back" type="Button" parent="OptionsMenu/VBoxContainer"]
+margin_top = 52.0
+margin_right = 96.0
+margin_bottom = 74.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Back"
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="OptionsMenu"]
+stream = ExtResource( 3 )
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/Screenshake" to="OptionsMenu" method="_on_Screenshake_pressed"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/Fullscreen" to="OptionsMenu" method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/Back" to="OptionsMenu" method="_on_Back_pressed"]

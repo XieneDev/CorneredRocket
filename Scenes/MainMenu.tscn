@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Resources/Theme/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/stars0.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/stars1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Icons/yt.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Icons/itch.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Icons/twitter.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Icons/yt_hover.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Icons/twitter_hover.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Icons/itch_hover.png" type="Texture" id=10]
+[ext_resource path="res://Audio/Music/title_music.wav" type="AudioStream" id=11]
+[ext_resource path="res://Resources/Theme/TitleFont.tres" type="DynamicFont" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "MusicFadeIn"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -80, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.044
+margin_left = -160.0
+margin_top = 16.0
+margin_right = 160.0
+margin_bottom = 48.08
+custom_fonts/font = ExtResource( 12 )
+text = "Cornered Rocket"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -18.0
+margin_right = 32.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+margin_right = 64.0
+margin_bottom = 21.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Play"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+margin_top = 25.0
+margin_right = 64.0
+margin_bottom = 46.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 64.0
+margin_bottom = 72.0
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Quit"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="FarStars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.25, 0.25 )
+motion_mirroring = Vector2( 640, 360 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/FarStars"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 4 )
+
+[node name="CloseStars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 640, 360 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/CloseStars"]
+position = Vector2( 160, 90 )
+texture = ExtResource( 3 )
+
+[node name="Socials" type="HBoxContainer" parent="."]
+margin_left = 256.0
+margin_top = 160.0
+margin_right = 312.0
+margin_bottom = 176.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YT" type="TextureButton" parent="Socials"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 8 )
+
+[node name="Itch" type="TextureButton" parent="Socials"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 10 )
+
+[node name="Twitter" type="TextureButton" parent="Socials"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -80.0
+autoplay = true
+
+[node name="MusicFadeIn" type="AnimationPlayer" parent="."]
+autoplay = "MusicFadeIn"
+anims/MusicFadeIn = SubResource( 5 )
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Socials/YT" to="." method="_on_YT_pressed"]
+[connection signal="pressed" from="Socials/Itch" to="." method="_on_Itch_pressed"]
+[connection signal="pressed" from="Socials/Twitter" to="." method="_on_Twitter_pressed"]
